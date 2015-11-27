@@ -1,7 +1,7 @@
 # Lean Testing PHP SDK
 
-[![Latest Stable Version](https://poser.pugx.org/cst/leantesting-sdk/v/stable)](https://packagist.org/packages/cst/leantesting-sdk)
-[![License](https://poser.pugx.org/cst/leantesting-sdk/license)](https://packagist.org/packages/cst/leantesting-sdk)
+[![Latest Stable Version](https://poser.pugx.org/cst/leantesting/v/stable)](https://packagist.org/packages/cst/leantesting)
+[![License](https://poser.pugx.org/cst/leantesting/license)](https://packagist.org/packages/cst/leantesting)
 
 **PHP client for [Lean Testing API](https://leantesting.com/en/api-docs)**
 
