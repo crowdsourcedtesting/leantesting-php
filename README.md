@@ -355,3 +355,7 @@ Install dependencies as mentioned above (which will resolve [PHPUnit](http://pac
 ```bash
 ./vendor/bin/phpunit
 ```
+
+## Contributing
+
+Please see [CONTRIBUTING](https://github.com/crowdsourcedtesting/leantesting-php/blob/master/CONTRIBUTING.md) for details.

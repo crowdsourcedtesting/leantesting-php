@@ -8,7 +8,8 @@ class SDKMissingArgException extends SDKException
 {
     private $base_message = 'Missing argument';
 
-    public function __construct($message = null) {
+    public function __construct($message = null)
+    {
         if ($message == null) {
             $message = $this->base_message;
         } else {

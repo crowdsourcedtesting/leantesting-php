@@ -1,9 +1,7 @@
 <?php
-
 namespace LeanTesting\API\Client;
 
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
-
 use LeanTesting\API\Client\Handler\Auth\OAuth2Handler;
 use LeanTesting\API\Client\Handler\User\UserHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectsHandler;
@@ -11,7 +9,6 @@ use LeanTesting\API\Client\Handler\Bug\BugsHandler;
 use LeanTesting\API\Client\Handler\Attachment\AttachmentsHandler;
 use LeanTesting\API\Client\Handler\Platform\PlatformHandler;
 
-define('REQUIRED', 1);
 define('OPTIONAL', 0);
 
 /**
@@ -23,6 +20,9 @@ define('OPTIONAL', 0);
  */
 final class Client
 {
+    const OPTIONAL_PARAM = 0;
+    const REQUIRED_PARAM = 1;
+
     protected $access_token = null;
 
     public $auth;
@@ -34,17 +34,14 @@ final class Client
 
     public $debug_return = null;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->auth        =  new OAuth2Handler($this);
         $this->user        =  new UserHandler($this);
         $this->projects    =  new ProjectsHandler($this);
         $this->bugs        =  new BugsHandler($this);
         $this->attachments =  new AttachmentsHandler($this);
         $this->platform    =  new PlatformHandler($this);
-    }
-
-    public function dododo($cls) {
-        print_r(new $cls);
     }
 
     /**
@@ -54,7 +51,8 @@ final class Client
      * @return string|bool Returns string of attached token or false if no token is attached.
      *
      */
-    public function getCurrentToken() {
+    public function getCurrentToken()
+    {
         if ($this->access_token === null) {
             return false;
         }
@@ -72,7 +70,8 @@ final class Client
      * @throws SDKInvalidArgException if provided $access_token param is not a string
      *
      */
-    public function attachToken($access_token) {
+    public function attachToken($access_token)
+    {
         if (!is_string($access_token)) {
             throw new SDKInvalidArgException('`$access_token` must be a string');
         }

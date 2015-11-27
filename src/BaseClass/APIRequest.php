@@ -1,9 +1,7 @@
 <?php
-
 namespace LeanTesting\API\Client\BaseClass;
 
 use LeanTesting\API\Client\Client;
-
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
 use LeanTesting\API\Client\Exception\SDKErrorResponseException;
 use LeanTesting\API\Client\Exception\SDKBadJSONResponseException;
@@ -46,7 +44,8 @@ class APIRequest
      * @throws SDKInvalidArgException if $opts param is not an array.
      *
      */
-    public function __construct(Client $origin, $endpoint, $method, $opts = []) {
+    public function __construct(Client $origin, $endpoint, $method, $opts = [])
+    {
         if (!is_string($method)) {
             throw new SDKInvalidArgException('`$method` must be a string');
         } elseif (!in_array($method, ['GET', 'POST', 'PUT', 'DELETE'])) {
@@ -75,7 +74,8 @@ class APIRequest
      * @throws SDKInvalidArgException if provided parameter list is non-array parameter.
      *
      */
-    public function updateOpts($opts = []) {
+    public function updateOpts($opts = [])
+    {
         if (!is_array($opts)) {
             throw new SDKInvalidArgException('`$opts` must be an array');
         } elseif (array_key_exists('params', $opts) && !is_array($opts['params'])) {
@@ -92,7 +92,8 @@ class APIRequest
      * @return string Returns resulting data response from server (including errors and inconsistencies)
      *
      */
-    public function call() {
+    public function call()
+    {
         $ch = curl_init();
 
         $curl_headers = [];
@@ -158,7 +159,8 @@ class APIRequest
      *         is issued, returns true if call is successful (exception otherwise).
      *
      */
-    public function exec() {
+    public function exec()
+    {
         if ($this->origin->debug_return != null &&
             array_key_exists('data', $this->origin->debug_return) &&
             array_key_exists('status', $this->origin->debug_return)) {

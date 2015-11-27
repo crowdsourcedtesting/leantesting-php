@@ -13,7 +13,8 @@ class PlatformHandler extends EntityHandler
     public $os;
     public $browsers;
 
-    public function __construct(Client $origin) {
+    public function __construct(Client $origin)
+    {
         parent::__construct($origin);
 
         $this->types    = new PlatformTypesHandler($origin);

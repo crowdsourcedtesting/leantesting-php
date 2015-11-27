@@ -11,13 +11,15 @@ class UserHandler extends EntityHandler
 {
     public $organizations;
 
-    public function __construct(Client $origin) {
+    public function __construct(Client $origin)
+    {
         parent::__construct($origin);
 
         $this->organizations = new UserOrganizationsHandler($origin);
     }
 
-    public function getInformation() {
+    public function getInformation()
+    {
         return (new APIRequest($this->origin, '/v1/me', 'GET'))->exec();
     }
 }

@@ -1,9 +1,7 @@
 <?php
-
 namespace LeanTesting\API\Client\BaseClass;
 
 use LeanTesting\API\Client\Client;
-
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
 use LeanTesting\API\Client\Exception\SDKUnsupportedRequestException;
 use LeanTesting\API\Client\Exception\SDKIncompleteRequestException;
@@ -25,7 +23,8 @@ class EntityHandler
 {
     protected $origin; // Reference to originating Client instance
 
-    public function __construct(Client $origin) {
+    public function __construct(Client $origin)
+    {
         $this->origin = $origin;
     }
 
@@ -39,7 +38,8 @@ class EntityHandler
      * @throws SDKInvalidArgException if provided $fields param is empty.
      *
      */
-    public function create($fields) {
+    public function create($fields)
+    {
         if (!is_array($fields)) {
             throw new SDKInvalidArgException('`$fields` must be an array');
         } elseif (!count($fields)) {
@@ -57,7 +57,8 @@ class EntityHandler
      * @throws SDKInvalidArgException if invalid filter value found in $filters array.
      *
      */
-    public function all($filters = []) {
+    public function all($filters = [])
+    {
         if (!is_array($filters)) {
             throw new SDKInvalidArgException('`$filters` must be an array');
         } else {
@@ -78,7 +79,8 @@ class EntityHandler
      * @throws SDKInvalidArgException if provided $id param is not an integer.
      *
      */
-    public function find($id) {
+    public function find($id)
+    {
         if (!is_int($id)) {
             throw new SDKInvalidArgException('`$id` must be of type integer');
         }
@@ -93,7 +95,8 @@ class EntityHandler
      * @throws SDKInvalidArgException if provided $id param is not an integer.
      *
      */
-    public function delete($id) {
+    public function delete($id)
+    {
         if (!is_int($id)) {
             throw new SDKInvalidArgException('`$id` must be of type integer');
         }
@@ -111,7 +114,8 @@ class EntityHandler
      * @throws SDKInvalidArgException if provided $fields param is empty.
      *
      */
-    public function update($id, $fields) {
+    public function update($id, $fields)
+    {
         if (!is_int($id)) {
             throw new SDKInvalidArgException('`$id` must be of type integer');
         } elseif (!is_array($fields)) {
@@ -124,19 +128,22 @@ class EntityHandler
     /**
      *
      * Helper function that enforces a structure based on a supported table:
-     *   - Forces use of REQUIRED fields
+     *   - Forces use of Client::REQUIRED_PARAM fields
      *   - Detects duplicate fields
      *   - Detects unsupported fields
      *
-     * @param mixed[] $array    Array to be enforced
-     * @param mixed[] $supports Support table consisting of REQUIRED and OPTIONAL keys to be used in enforcing
+     * @param mixed[] $array Array to be enforced
+     * @param mixed[] $supports Support table consisting of Client::REQUIRED_PARAM and
+     * Client::OPTIONAL_PARAM keys to be used in enforcing
      *
+     * @return bool
      * @throws SDKUnsupportedRequestException if unsupported fields are found
      * @throws SDKIncompleteRequestException  if any required field is missing
      * @throws SDKDuplicateRequestException   if any duplicate field is found
      *
      */
-    protected function enforce($array, $supports) {
+    protected function enforce($array, $supports)
+    {
         $sall  = [];        // All supported keys
         $sreq  = [];        // Mandatory supported keys
 
@@ -147,7 +154,7 @@ class EntityHandler
         $mreq  = [];        // Missing required keys
 
         foreach ($supports as $sk => $sv) {
-            if ($sv === REQUIRED) {
+            if ($sv === Client::REQUIRED_PARAM) {
                 array_push($sreq, $sk);
             }
             array_push($sall, $sk);

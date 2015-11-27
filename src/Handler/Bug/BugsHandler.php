@@ -9,7 +9,8 @@ use LeanTesting\API\Client\Entity\Bug\Bug;
 
 class BugsHandler extends EntityHandler
 {
-    public function find($id) {
+    public function find($id)
+    {
         parent::find($id);
 
         $req = new APIRequest(
@@ -25,14 +26,16 @@ class BugsHandler extends EntityHandler
         return new Bug($this->origin, $req->exec());
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         parent::delete($id);
 
         $req = new APIRequest($this->origin, '/v1/bugs/' . $id, 'DELETE');
         return $req->exec();
     }
 
-    public function update($id, $fields) {
+    public function update($id, $fields)
+    {
         parent::update($id, $fields);
 
         $supports = [

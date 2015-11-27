@@ -28,7 +28,8 @@ class Project extends Entity
 
     public $bugs;
 
-    public function __construct($origin, $data) {
+    public function __construct($origin, $data)
+    {
         parent::__construct($origin, $data);
 
         $this->sections = new ProjectSectionsHandler($origin, $data['id']);

@@ -1,5 +1,4 @@
 <?php
-
 namespace LeanTesting\API\Client\Handler\Project;
 
 use LeanTesting\API\Client\BaseClass\APIRequest;
@@ -12,16 +11,22 @@ class ProjectBugReproducibilitySchemeHandler extends EntityHandler
 
     protected $project_id;
 
-    public function __construct($origin, $project_id) {
+    public function __construct($origin, $project_id)
+    {
         parent::__construct($origin);
 
         $this->project_id = $project_id;
     }
 
-    public function all($filters = []) {
+    public function all($filters = [])
+    {
         parent::all($filters);
 
-        $request = new APIRequest($this->origin, '/v1/projects/' . $this->project_id . '/bug-reproducibility-scheme', 'GET');
+        $request = new APIRequest(
+            $this->origin,
+            '/v1/projects/' . $this->project_id . '/bug-reproducibility-scheme',
+            'GET'
+        );
         return new EntityList($this->origin, $request, $this->return_class, $filters);
     }
 }

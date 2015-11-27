@@ -6,7 +6,8 @@ use LeanTesting\API\Client\Exception\BaseException\SDKException;
 
 class SDKErrorResponseException extends SDKException
 {
-    public function __construct($message = null) {
+    public function __construct($message = null)
+    {
         if ($message == null) {
             $message = 'Unknown remote error';
         } else {

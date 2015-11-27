@@ -6,6 +6,7 @@ use LeanTesting\API\Client\BaseClass\APIRequest;
 use LeanTesting\API\Client\BaseClass\EntityHandler;
 use LeanTesting\API\Client\BaseClass\EntityList;
 
+use LeanTesting\API\Client\Client;
 use LeanTesting\API\Client\Entity\Bug\Bug;
 
 class ProjectBugsHandler extends EntityHandler
@@ -14,41 +15,43 @@ class ProjectBugsHandler extends EntityHandler
 
     protected $project_id;
 
-    public function __construct($origin, $project_id) {
+    public function __construct($origin, $project_id)
+    {
         parent::__construct($origin);
 
         $this->project_id = $project_id;
     }
 
-    public function create($fields) {
+    public function create($fields)
+    {
         parent::create($fields);
 
         $supports = [
-            'title'              => REQUIRED,
-            'status_id'          => REQUIRED,
-            'severity_id'        => REQUIRED,
-            'project_version'    => REQUIRED,
-            'project_version_id' => REQUIRED,
-            'project_section_id' => OPTIONAL,
-            'type_id'            => OPTIONAL,
-            'reproducibility_id' => OPTIONAL,
-            'assigned_user_id'   => OPTIONAL,
-            'description'        => OPTIONAL,
-            'expected_results'   => OPTIONAL,
-            'steps'              => OPTIONAL,
-            'platform'           => OPTIONAL
-            // 'device_model'       => OPTIONAL,
-            // 'device_model_id'    => OPTIONAL,
-            // 'os'                 => OPTIONAL,
-            // 'os_version'         => OPTIONAL,
-            // 'os_version_id'      => OPTIONAL,
-            // 'browser_version_id' => OPTIONAL
+            'title'              => Client::REQUIRED_PARAM,
+            'status_id'          => Client::REQUIRED_PARAM,
+            'severity_id'        => Client::REQUIRED_PARAM,
+            'project_version'    => Client::REQUIRED_PARAM,
+            'project_version_id' => Client::REQUIRED_PARAM,
+            'project_section_id' => Client::OPTIONAL_PARAM,
+            'type_id'            => Client::OPTIONAL_PARAM,
+            'reproducibility_id' => Client::OPTIONAL_PARAM,
+            'assigned_user_id'   => Client::OPTIONAL_PARAM,
+            'description'        => Client::OPTIONAL_PARAM,
+            'expected_results'   => Client::OPTIONAL_PARAM,
+            'steps'              => Client::OPTIONAL_PARAM,
+            'platform'           => Client::OPTIONAL_PARAM
+            // 'device_model'       => Client::self::OPTIONAL_PARAM,
+            // 'device_model_id'    => Client::self::OPTIONAL_PARAM,
+            // 'os'                 => Client::self::OPTIONAL_PARAM,
+            // 'os_version'         => Client::self::OPTIONAL_PARAM,
+            // 'os_version_id'      => Client::self::OPTIONAL_PARAM,
+            // 'browser_version_id' => Client::self::OPTIONAL_PARAM
         ];
 
         if (array_key_exists('project_version_id', $fields)) {
-            $supports['project_version'] = OPTIONAL;
+            $supports['project_version'] = Client::OPTIONAL_PARAM;
         } elseif (array_key_exists('project_version', $fields)) {
-            $supports['project_version_id'] = OPTIONAL;
+            $supports['project_version_id'] = Client::OPTIONAL_PARAM;
         }
 
         if ($this->enforce($fields, $supports)) {
@@ -65,7 +68,8 @@ class ProjectBugsHandler extends EntityHandler
         }
     }
 
-    public function all($filters = []) {
+    public function all($filters = [])
+    {
         parent::all($filters);
 
         $filters = array_merge(['include' => 'steps,platform,attachments,comments,tags'], $filters);

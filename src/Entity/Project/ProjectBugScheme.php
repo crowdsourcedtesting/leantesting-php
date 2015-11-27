@@ -6,7 +6,8 @@ use LeanTesting\API\Client\BaseClass\Entity;
 
 class ProjectBugScheme extends Entity
 {
-    public function __construct($origin, $data) {
+    public function __construct($origin, $data)
+    {
         parent::__construct($origin, $data);
     }
 }

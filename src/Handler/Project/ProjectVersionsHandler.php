@@ -6,6 +6,7 @@ use LeanTesting\API\Client\BaseClass\APIRequest;
 use LeanTesting\API\Client\BaseClass\EntityHandler;
 use LeanTesting\API\Client\BaseClass\EntityList;
 
+use LeanTesting\API\Client\Client;
 use LeanTesting\API\Client\Entity\Project\ProjectVersion;
 
 class ProjectVersionsHandler extends EntityHandler
@@ -14,17 +15,19 @@ class ProjectVersionsHandler extends EntityHandler
 
     protected $project_id;
 
-    public function __construct($origin, $project_id) {
+    public function __construct($origin, $project_id)
+    {
         parent::__construct($origin);
 
         $this->project_id = $project_id;
     }
 
-    public function create($fields) {
+    public function create($fields)
+    {
         parent::create($fields);
 
         $supports = [
-            'number' => REQUIRED
+            'number' => Client::REQUIRED_PARAM
         ];
 
         if ($this->enforce($fields, $supports)) {
@@ -39,7 +42,8 @@ class ProjectVersionsHandler extends EntityHandler
         }
     }
 
-    public function all($filters = []) {
+    public function all($filters = [])
+    {
         parent::all($filters);
 
         $request = new APIRequest($this->origin, '/v1/projects/' . $this->project_id . '/versions', 'GET');

@@ -1,13 +1,10 @@
 <?php
-
 namespace LeanTesting\API\Client\Handler\Bug;
 
 use LeanTesting\API\Client\BaseClass\APIRequest;
 use LeanTesting\API\Client\BaseClass\EntityHandler;
 use LeanTesting\API\Client\BaseClass\EntityList;
-
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
-
 use LeanTesting\API\Client\Entity\Bug\BugAttachment;
 
 class BugAttachmentsHandler extends EntityHandler
@@ -16,7 +13,8 @@ class BugAttachmentsHandler extends EntityHandler
 
     protected $bug_id;
 
-    public function __construct($origin, $bug_id) {
+    public function __construct($origin, $bug_id)
+    {
         parent::__construct($origin);
 
         $this->bug_id = $bug_id;
@@ -34,9 +32,10 @@ class BugAttachmentsHandler extends EntityHandler
      * @return mixed file identifier
      *
      */
-    private function getCurlFile($filepath) {
+    private function getCurlFile($filepath)
+    {
         $content_type = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $filepath);
-        $target_name  = basename($filepath);
+        $target_name = basename($filepath);
 
         if (function_exists('curl_file_create')) {
             return curl_file_create($filepath, $content_type, $target_name);
@@ -65,7 +64,8 @@ class BugAttachmentsHandler extends EntityHandler
      * @return BugAttachment the newly uploaded attachment
      *
      */
-    public function upload($filepath) {
+    public function upload($filepath)
+    {
         if (!is_string($filepath)) {
             throw new SDKInvalidArgException('`$filepath` must be of type string');
         }
@@ -75,9 +75,9 @@ class BugAttachmentsHandler extends EntityHandler
             '/v1/bugs/' . $this->bug_id . '/attachments',
             'POST',
             [
-                'form_data'       => true,
-                'params'          => [
-                    'file'        => $this->getCurlFile($filepath)
+                'form_data' => true,
+                'params' => [
+                    'file' => $this->getCurlFile($filepath)
                 ]
             ]
         );
@@ -85,7 +85,8 @@ class BugAttachmentsHandler extends EntityHandler
         return new BugAttachment($this->origin, $req->exec());
     }
 
-    public function all($filters = []) {
+    public function all($filters = [])
+    {
         parent::all($filters);
 
         $request = new APIRequest($this->origin, '/v1/bugs/' . $this->bug_id . '/attachments', 'GET');

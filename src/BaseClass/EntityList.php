@@ -42,7 +42,8 @@ class EntityList implements \Iterator
      * @throws SDKUnexpectedResponseException if multiple collection sets are found
      *
      */
-    protected function generateCollectionData() {
+    protected function generateCollectionData()
+    {
         $this->collection = []; // Clear previous collection data on fresh regeneration
         $this->pagination = []; // Clear previous pagination data on fresh regeneration
 
@@ -60,7 +61,7 @@ class EntityList implements \Iterator
         }
 
         $this->pagination = $raw['meta']['pagination']; // Pass pagination data as per response meta key
-        unset ($raw['meta']);
+        unset($raw['meta']);
 
         if (!count($raw)) {
             throw new SDKUnexpectedResponseException('collection object missing');
@@ -87,7 +88,8 @@ class EntityList implements \Iterator
      * @param mixed[]    $filters    original filters passed over from originating all() call
      *
      */
-    public function __construct(Client $origin, APIRequest $request, $identifier, $filters = []) {
+    public function __construct(Client $origin, APIRequest $request, $identifier, $filters = [])
+    {
         $this->origin     = $origin;
         $this->request    = $request;
         $this->identifier = $identifier;
@@ -107,7 +109,8 @@ class EntityList implements \Iterator
      * Sets iterator position to first page. Ignored if already on first page.
      *
      */
-    public function first() {
+    public function first()
+    {
         if ($this->pagination['current_page'] === 1) {
             return false;
         }
@@ -122,7 +125,8 @@ class EntityList implements \Iterator
      * Sets iterator position to previous page. Ignored if on first page.
      *
      */
-    public function previous() {
+    public function previous()
+    {
         if ($this->pagination['current_page'] === 1) {
             return false;
         }
@@ -138,7 +142,8 @@ class EntityList implements \Iterator
      * (required for Iterator implementation)
      *
      */
-    public function next() {
+    public function next()
+    {
         if ($this->pagination['current_page'] === $this->pagination['total_pages']) {
             ++$this->real_page;
             return false;
@@ -159,7 +164,8 @@ class EntityList implements \Iterator
      * Sets iterator position to last page. Ignored if already on last page.
      *
      */
-    public function last() {
+    public function last()
+    {
         if ($this->pagination['current_page'] === $this->pagination['total_pages']) {
             return false;
         }
@@ -175,7 +181,8 @@ class EntityList implements \Iterator
      * (required for Iterator implementation)
      *
      */
-    public function rewind() {
+    public function rewind()
+    {
         $this->first();
     }
 
@@ -187,7 +194,8 @@ class EntityList implements \Iterator
      * @return Entity[] internal collection of Entity objects. Objects will be of child class types, not Entity parent.
      *
      */
-    public function current() {
+    public function current()
+    {
         return $this->toArray();
     }
 
@@ -199,7 +207,8 @@ class EntityList implements \Iterator
      * @return integer the effective position of the iterator
      *
      */
-    public function key() {
+    public function key()
+    {
         return $this->real_page;
     }
 
@@ -211,7 +220,8 @@ class EntityList implements \Iterator
      * @return boolean true/false depending on whether or not last_page + 1 is detected
      *
      */
-    public function valid() {
+    public function valid()
+    {
         $test = (
             $this->real_page === $this->pagination['current_page'] &&
             $this->real_page <= $this->pagination['total_pages']
@@ -231,7 +241,8 @@ class EntityList implements \Iterator
      * @return integer Number of total Entities
      *
      */
-    public function total() {
+    public function total()
+    {
         return $this->pagination['total'];
     }
 
@@ -242,18 +253,21 @@ class EntityList implements \Iterator
      * @return integer Number of total pages
      *
      */
-    public function totalPages() {
+    public function totalPages()
+    {
         return $this->pagination['total_pages'];
     }
 
     /**
      *
-     * Outputs number of Entities in current collection page. Will always be same as limmit/per_page if not on last page.
+     * Outputs number of Entities in current collection page.
+     * Will always be same as limmit/per_page if not on last page.
      *
      * @return integer Number of Entities in page
      *
      */
-    public function count() {
+    public function count()
+    {
         return $this->pagination['count'];
     }
 
@@ -264,9 +278,10 @@ class EntityList implements \Iterator
      * @return mixed[] array of converted array elements
      *
      */
-    public function toArray() {
+    public function toArray()
+    {
         $arr = [];
-        foreach($this->collection as $entity) {
+        foreach ($this->collection as $entity) {
             array_push($arr, $entity->data);
         }
         return $arr;

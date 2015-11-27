@@ -19,7 +19,8 @@ class OAuth2Handler
 {
     private $origin; // Reference to originating PHPClient instance
 
-    public function __construct(Client $origin) {
+    public function __construct(Client $origin)
+    {
         $this->origin = $origin;
     }
 
@@ -40,7 +41,8 @@ class OAuth2Handler
      * @return string returns URL to follow for authorization code request
      *
      */
-    public function generateAuthLink($client_id, $redirect_uri, $scope = 'read', $state = null) {
+    public function generateAuthLink($client_id, $redirect_uri, $scope = 'read', $state = null)
+    {
         if (!is_string($client_id)) {
             throw new SDKInvalidArgException('`$client_id` must be a string');
         } elseif (!is_string($redirect_uri)) {
@@ -87,7 +89,8 @@ class OAuth2Handler
      * @return string returns obtained access token string
      *
      */
-    public function exchangeAuthCode($client_id, $client_secret, $grant_type, $code, $redirect_uri) {
+    public function exchangeAuthCode($client_id, $client_secret, $grant_type, $code, $redirect_uri)
+    {
         if (!is_string($client_id)) {
             throw new SDKInvalidArgException('`$client_id` must be a string');
         } elseif (!is_string($client_secret)) {

@@ -1,9 +1,7 @@
 <?php
-
 namespace LeanTesting\API\Client\BaseClass;
 
 use LeanTesting\API\Client\Client;
-
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
 
 /**
@@ -27,7 +25,8 @@ class Entity
      * @throws SDKInvalidArgException if provided $data param is empty. Entities cannot be empty.
      *
      */
-    public function __construct(Client $origin, $data) {
+    public function __construct(Client $origin, $data)
+    {
         if (!is_array($data)) {
             throw new SDKInvalidArgException('`$data` must be an array');
         } elseif (!count($data)) {
