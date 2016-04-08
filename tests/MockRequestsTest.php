@@ -282,7 +282,7 @@ class MockRequestsTest extends \PHPUnit_Framework_TestCase
         $ret_class = 'LeanTesting\API\Client\Entity\Bug\Bug';
         $resp = $this->rcol($col_name, ['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
             '_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
-            'expected_results']);
+            '_priority_id', 'expected_results']);
         $this->client->debug_return = ['data' => json_encode($resp), 'status' => 200];
 
         $col = (new Project($this->client, ['id' => 0]))->bugs->all();
@@ -296,13 +296,13 @@ class MockRequestsTest extends \PHPUnit_Framework_TestCase
     public function testCreateNewBug() {
         $ret_class = 'LeanTesting\API\Client\Entity\Bug\Bug';
         $resp = $this->robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-            '_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+            '_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
             'expected_results']);
         $this->client->debug_return = ['data' => json_encode($resp), 'status' => 200];
 
         $obj = (new Project($this->client, ['id' => 0]))->bugs->create([
             'title' => '', 'status_id' => 0, 'severity_id' => 0, 'project_version_id' => 0, 'project_section_id' => 0,
-            'type_id' => 0, 'reproducibility_id' => 0, 'assigned_user_id' => 0, 'description' => '',
+            'type_id' => 0, 'reproducibility_id' => 0, 'priority_id' => 0, 'assigned_user_id' => 0, 'description' => '',
             'expected_results' => ''
         ]);
 
@@ -312,7 +312,7 @@ class MockRequestsTest extends \PHPUnit_Framework_TestCase
     public function testRetrieveExistingBug() {
         $ret_class = 'LeanTesting\API\Client\Entity\Bug\Bug';
         $resp = $this->robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-            '_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+            '_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
             'expected_results']);
         $this->client->debug_return = ['data' => json_encode($resp), 'status' => 200];
 
@@ -324,13 +324,13 @@ class MockRequestsTest extends \PHPUnit_Framework_TestCase
     public function testUpdateBug() {
         $ret_class = 'LeanTesting\API\Client\Entity\Bug\Bug';
         $resp = $this->robj(['_id', 'title', '_status_id', '_severity_id', '_project_version_id',
-            '_project_section_id', '_type_id', '_reproducibility_id', '_assigned_user_id', 'description',
+            '_project_section_id', '_type_id', '_reproducibility_id', '_priority_id', '_assigned_user_id', 'description',
             'expected_results']);
         $this->client->debug_return = ['data' => json_encode($resp), 'status' => 200];
 
         $obj = $this->client->bugs->update(0, [
             'title' => '', 'status_id' => 0, 'severity_id' => 0, 'project_version_id' => 0, 'project_section_id' => 0,
-            'type_id' => 0, 'assigned_user_id' => 0, 'description' => '', 'expected_results' => ''
+            'type_id' => 0, 'assigned_user_id' => 0, 'description' => '', 'expected_results' => '', 'priority_id' => 0
         ]);
 
         $this->assertSame($resp, $obj->data);
