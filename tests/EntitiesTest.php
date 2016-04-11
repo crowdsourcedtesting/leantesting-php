@@ -35,6 +35,7 @@ class EntitiesTest extends \PHPUnit_Framework_TestCase
             'bugStatusScheme'           =>'LeanTesting\API\Client\Handler\Project\ProjectBugStatusSchemeHandler',
             'bugSeverityScheme'         =>'LeanTesting\API\Client\Handler\Project\ProjectBugSeveritySchemeHandler',
             'bugReproducibilityScheme'  =>'LeanTesting\API\Client\Handler\Project\ProjectBugReproducibilitySchemeHandler',
+            'bugPriorityScheme'         =>'LeanTesting\API\Client\Handler\Project\ProjectBugPrioritySchemeHandler',
 
             'bugs'          => 'LeanTesting\API\Client\Handler\Project\ProjectBugsHandler'
         ]],

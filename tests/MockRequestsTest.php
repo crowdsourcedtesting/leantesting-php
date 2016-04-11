@@ -272,6 +272,20 @@ class MockRequestsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($resp['meta']['pagination']['total_pages'], $col->totalPages());
         $this->assertEquals($resp['meta']['pagination']['count'], $col->count());
     }
+    public function testListProjectBugPriorityScheme() {
+        $col_name = 'scheme';
+        $ret_class = 'LeanTesting\API\Client\Entity\Project\ProjectBugScheme';
+        $resp = $this->rcol($col_name, ['_id', 'name']);
+        $this->client->debug_return = ['data' => json_encode($resp), 'status' => 200];
+
+        $col = (new Project($this->client, ['id' => 0]))->bugPriorityScheme->all();
+
+        $this->assertSame($resp[$col_name], $col->toArray());
+        $this->assertInstanceOf($ret_class, $col->collection[0]);
+        $this->assertEquals($resp['meta']['pagination']['total'], $col->total());
+        $this->assertEquals($resp['meta']['pagination']['total_pages'], $col->totalPages());
+        $this->assertEquals($resp['meta']['pagination']['count'], $col->count());
+    }
     /* END PROJECT */
 
 
