@@ -35,6 +35,7 @@ class ProjectBugsHandler extends EntityHandler
             'project_section_id' => Client::OPTIONAL_PARAM,
             'type_id'            => Client::OPTIONAL_PARAM,
             'reproducibility_id' => Client::OPTIONAL_PARAM,
+            'priority_id'        => Client::OPTIONAL_PARAM,
             'assigned_user_id'   => Client::OPTIONAL_PARAM,
             'description'        => Client::OPTIONAL_PARAM,
             'expected_results'   => Client::OPTIONAL_PARAM,

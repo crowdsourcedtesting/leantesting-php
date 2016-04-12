@@ -12,6 +12,7 @@ use LeanTesting\API\Client\Handler\Project\ProjectBugTypeSchemeHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectBugStatusSchemeHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectBugSeveritySchemeHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectBugReproducibilitySchemeHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectBugPrioritySchemeHandler;
 
 use LeanTesting\API\Client\Handler\Project\ProjectBugsHandler;
 
@@ -25,6 +26,7 @@ class Project extends Entity
     public $bugStatusScheme;
     public $bugSeverityScheme;
     public $bugReproducibilityScheme;
+    public $bugPriorityScheme;
 
     public $bugs;
 
@@ -40,6 +42,7 @@ class Project extends Entity
         $this->bugStatusScheme          = new ProjectBugStatusSchemeHandler($origin, $data['id']);
         $this->bugSeverityScheme        = new ProjectBugSeveritySchemeHandler($origin, $data['id']);
         $this->bugReproducibilityScheme = new ProjectBugReproducibilitySchemeHandler($origin, $data['id']);
+        $this->bugPriorityScheme        = new ProjectBugPrioritySchemeHandler($origin, $data['id']);
 
         $this->bugs = new ProjectBugsHandler($origin, $data['id']);
     }

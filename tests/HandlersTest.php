@@ -23,6 +23,7 @@ class HandlersTest extends \PHPUnit_Framework_TestCase
         ['LeanTesting\API\Client\Handler\Platform\PlatformTypeDevicesHandler',              'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\Platform\PlatformTypesHandler'],
         ['LeanTesting\API\Client\Handler\Project\ProjectBugReproducibilitySchemeHandler',   'requiresIDInConstructor'],
+        ['LeanTesting\API\Client\Handler\Project\ProjectBugPrioritySchemeHandler',          'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\Project\ProjectBugSeveritySchemeHandler',          'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\Project\ProjectBugsHandler',                       'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\Project\ProjectBugStatusSchemeHandler',            'requiresIDInConstructor'],

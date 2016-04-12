@@ -42,6 +42,7 @@ class BugsHandler extends EntityHandler
             'title'              => OPTIONAL,
             'status_id'          => OPTIONAL,
             'severity_id'        => OPTIONAL,
+            'priority_id'        => OPTIONAL,
             'project_version_id' => OPTIONAL,
             'project_section_id' => OPTIONAL,
             'type_id'            => OPTIONAL,
