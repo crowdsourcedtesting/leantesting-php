@@ -53,7 +53,7 @@ class OAuth2Handler
             throw new SDKInvalidArgException('`$state` must be a string');
         }
 
-        $base_url = 'https://leantesting.com/login/oauth/authorize';
+        $base_url = 'https://app.leantesting.com/login/oauth/authorize';
 
         $params = [
             'client_id'    => $client_id,
@@ -116,7 +116,7 @@ class OAuth2Handler
             '/login/oauth/access_token',
             'POST',
             [
-                'base_uri' => 'https://leantesting.com',
+                'base_uri' => 'https://app.leantesting.com',
                 'params'   => $params
             ]
         );
