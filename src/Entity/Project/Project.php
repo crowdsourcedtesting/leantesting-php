@@ -5,6 +5,8 @@ namespace LeanTesting\API\Client\Entity\Project;
 use LeanTesting\API\Client\BaseClass\Entity;
 
 use LeanTesting\API\Client\Handler\Project\ProjectSectionsHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectTestCasesHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectTestRunsHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectVersionsHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectUsersHandler;
 
@@ -30,13 +32,20 @@ class Project extends Entity
 
     public $bugs;
 
+    /**
+     * Project constructor.
+     * @param \LeanTesting\API\Client\Client $origin
+     * @param \mixed[] $data
+     */
     public function __construct($origin, $data)
     {
         parent::__construct($origin, $data);
 
-        $this->sections = new ProjectSectionsHandler($origin, $data['id']);
-        $this->versions = new ProjectVersionsHandler($origin, $data['id']);
-        $this->users    = new ProjectUsersHandler($origin, $data['id']);
+        $this->sections  = new ProjectSectionsHandler($origin, $data['id']);
+        $this->versions  = new ProjectVersionsHandler($origin, $data['id']);
+        $this->users     = new ProjectUsersHandler($origin, $data['id']);
+        $this->testRuns  = new ProjectTestRunsHandler($origin, $data['id']);
+        $this->testCases = new ProjectTestCasesHandler($origin, $data['id']);
 
         $this->bugTypeScheme            = new ProjectBugTypeSchemeHandler($origin, $data['id']);
         $this->bugStatusScheme          = new ProjectBugStatusSchemeHandler($origin, $data['id']);
