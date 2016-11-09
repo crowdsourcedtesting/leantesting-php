@@ -46,7 +46,7 @@ class ProjectUsersHandler extends EntityHandler
     {
         parent::delete($id);
 
-        $endpoint = sprintf('/v1/projects/%s/users', $id);
+        $endpoint = sprintf('/v1/projects/%s/users/%s', $this->project_id, $id);
         $req      = new APIRequest($this->origin, $endpoint, 'DELETE');
         return $req->exec();
     }
