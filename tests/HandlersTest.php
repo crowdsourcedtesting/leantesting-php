@@ -32,8 +32,9 @@ class HandlersTest extends \PHPUnit_Framework_TestCase
         ['LeanTesting\API\Client\Handler\Project\ProjectsHandler'],
         ['LeanTesting\API\Client\Handler\Project\ProjectUsersHandler',                      'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\Project\ProjectVersionsHandler',                   'requiresIDInConstructor'],
-        ['LeanTesting\API\Client\Handler\Project\ProjectTestCasesHandler',                   'requiresIDInConstructor'],
+        ['LeanTesting\API\Client\Handler\Project\ProjectTestCasesHandler',                  'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\Project\ProjectTestRunsHandler',                   'requiresIDInConstructor'],
+        ['LeanTesting\API\Client\Handler\Project\ProjectWebhooksHandler',                   'requiresIDInConstructor'],
         ['LeanTesting\API\Client\Handler\User\UserHandler'],
         ['LeanTesting\API\Client\Handler\User\UserOrganizationsHandler']
     ];

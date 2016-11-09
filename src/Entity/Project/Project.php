@@ -17,6 +17,7 @@ use LeanTesting\API\Client\Handler\Project\ProjectBugReproducibilitySchemeHandle
 use LeanTesting\API\Client\Handler\Project\ProjectBugPrioritySchemeHandler;
 
 use LeanTesting\API\Client\Handler\Project\ProjectBugsHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectWebhooksHandler;
 
 class Project extends Entity
 {
@@ -46,6 +47,7 @@ class Project extends Entity
         $this->users     = new ProjectUsersHandler($origin, $data['id']);
         $this->testRuns  = new ProjectTestRunsHandler($origin, $data['id']);
         $this->testCases = new ProjectTestCasesHandler($origin, $data['id']);
+        $this->webhooks  = new ProjectWebhooksHandler($origin, $data['id']);
 
         $this->bugTypeScheme            = new ProjectBugTypeSchemeHandler($origin, $data['id']);
         $this->bugStatusScheme          = new ProjectBugStatusSchemeHandler($origin, $data['id']);
