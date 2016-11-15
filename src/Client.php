@@ -9,8 +9,6 @@ use LeanTesting\API\Client\Handler\Bug\BugsHandler;
 use LeanTesting\API\Client\Handler\Attachment\AttachmentsHandler;
 use LeanTesting\API\Client\Handler\Platform\PlatformHandler;
 
-define('OPTIONAL', 0);
-
 /**
  *
  * Lean Testing PHP Client SDK
@@ -22,6 +20,8 @@ final class Client
 {
     const OPTIONAL_PARAM = 0;
     const REQUIRED_PARAM = 1;
+
+    public static $api_base_uri = 'https://api.leantesting.com';
 
     protected $access_token = null;
 
@@ -46,7 +46,7 @@ final class Client
 
     /**
      *
-     * Function to retrieve curently attached token.
+     * Function to retrieve currently attached token.
      *
      * @return string|bool Returns string of attached token or false if no token is attached.
      *
