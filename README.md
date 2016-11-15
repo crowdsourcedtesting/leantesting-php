@@ -19,7 +19,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "cst/leantesting-sdk": "~1.0"
+        "cst/leantesting": "~1.0"
     }
 }
 ```
