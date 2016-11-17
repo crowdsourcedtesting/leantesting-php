@@ -24,6 +24,9 @@ class Project extends Entity
     public $sections;
     public $versions;
     public $users;
+    public $testRuns;
+    public $testCases;
+    public $webhooks;
 
     public $bugTypeScheme;
     public $bugStatusScheme;
