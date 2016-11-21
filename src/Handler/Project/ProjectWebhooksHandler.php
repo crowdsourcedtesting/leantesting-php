@@ -56,7 +56,7 @@ class ProjectWebhooksHandler extends EntityHandler
     {
         parent::find($id);
 
-        $endpoint = sprintf('/v1/projects/%s/webhooks/%s', $this->project_id, $id);
+        $endpoint = sprintf('/v1/projects/%s/integrations/webhooks/%s', $this->project_id, $id);
         $req      = new APIRequest($this->origin, $endpoint, 'GET');
         return new ProjectWebhook($this->origin, $req->exec());
     }
@@ -73,7 +73,7 @@ class ProjectWebhooksHandler extends EntityHandler
             array_fill_keys($this->events, Client::OPTIONAL_PARAM));
 
         if ($this->enforce($fields, $supports)) {
-            $endpoint = sprintf('/v1/projects/%s/webhooks', $this->project_id);
+            $endpoint = sprintf('/v1/projects/%s/integrations/webhooks', $this->project_id);
             $req      = new APIRequest($this->origin, $endpoint, 'POST', ['params' => $fields]);
             return new ProjectWebhook($this->origin, $req->exec());
         }
@@ -84,7 +84,7 @@ class ProjectWebhooksHandler extends EntityHandler
     {
         parent::delete($id);
 
-        $endpoint = sprintf('/v1/projects/%s/webhooks/%s', $this->project_id, $id);
+        $endpoint = sprintf('/v1/projects/%s/integrations/webhooks/%s', $this->project_id, $id);
         $req      = new APIRequest($this->origin, $endpoint, 'DELETE');
         return $req->exec();
     }
@@ -99,7 +99,7 @@ class ProjectWebhooksHandler extends EntityHandler
 
         $request = new APIRequest(
             $this->origin,
-            '/v1/projects/' . $this->project_id . '/webhooks',
+            '/v1/projects/' . $this->project_id . '/integrations/webhooks',
             'GET'
         );
         return new EntityList($this->origin, $request, $this->return_class, $filters);
