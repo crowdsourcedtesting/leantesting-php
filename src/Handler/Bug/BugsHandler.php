@@ -10,7 +10,12 @@ use LeanTesting\API\Client\Entity\Bug\Bug;
 
 class BugsHandler extends EntityHandler
 {
-    public function find($id)
+    /**
+     * @param int $id
+     * @param array $params
+     * @return Bug
+     */
+    public function find($id, array $params = [])
     {
         parent::find($id);
 
@@ -19,9 +24,7 @@ class BugsHandler extends EntityHandler
             '/v1/bugs/' . $id,
             'GET',
             [
-                'params' => [
-                    'include' => 'steps,platform,attachments,comments,tags'
-                ]
+                'params' => $params
             ]
         );
         return new Bug($this->origin, $req->exec());

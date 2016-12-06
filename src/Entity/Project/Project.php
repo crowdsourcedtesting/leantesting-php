@@ -21,19 +21,53 @@ use LeanTesting\API\Client\Handler\Project\ProjectWebhooksHandler;
 
 class Project extends Entity
 {
+    /**
+     * @var ProjectSectionsHandler
+     */
     public $sections;
+    /**
+     * @var ProjectVersionsHandler
+     */
     public $versions;
+    /**
+     * @var ProjectUsersHandler
+     */
     public $users;
+    /**
+     * @var ProjectTestRunsHandler
+     */
     public $testRuns;
+    /**
+     * @var ProjectTestCasesHandler
+     */
     public $testCases;
+    /**
+     * @var ProjectWebhooksHandler
+     */
     public $webhooks;
-
+    /**
+     * @var ProjectBugTypeSchemeHandler
+     */
     public $bugTypeScheme;
+    /**
+     * @var ProjectBugStatusSchemeHandler
+     */
     public $bugStatusScheme;
+    /**
+     * @var ProjectBugSeveritySchemeHandler
+     */
     public $bugSeverityScheme;
+    /**
+     * @var ProjectBugReproducibilitySchemeHandler
+     */
     public $bugReproducibilityScheme;
+    /**
+     * @var ProjectBugPrioritySchemeHandler
+     */
     public $bugPriorityScheme;
-
+    /**
+     * @var ProjectBugsHandler
+     */
     public $bugs;
 
     /**

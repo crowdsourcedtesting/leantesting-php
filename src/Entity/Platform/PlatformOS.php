@@ -8,6 +8,9 @@ use LeanTesting\API\Client\Handler\Platform\PlatformOSVersionsHandler;
 
 class PlatformOS extends Entity
 {
+    /**
+     * @var PlatformOSVersionsHandler
+     */
     public $versions;
 
     public function __construct($origin, $data)

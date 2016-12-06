@@ -8,6 +8,9 @@ use LeanTesting\API\Client\Handler\Platform\PlatformBrowserVersionsHandler;
 
 class PlatformBrowser extends Entity
 {
+    /**
+     * @var PlatformBrowserVersionsHandler
+     */
     public $versions;
 
     public function __construct($origin, $data)
