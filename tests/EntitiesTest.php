@@ -7,7 +7,7 @@ use LeanTesting\API\Client\Exception\SDKInvalidArgException;
 class EntitiesTest extends \PHPUnit_Framework_TestCase
 {
 
-    private $entity_colllection = [
+    private $entity_collection = [
         ['LeanTesting\API\Client\Entity\Bug\Bug', [
             'comments'      => 'LeanTesting\API\Client\Handler\Bug\BugCommentsHandler',
             'attachments'   => 'LeanTesting\API\Client\Handler\Bug\BugAttachmentsHandler'
@@ -47,26 +47,26 @@ class EntitiesTest extends \PHPUnit_Framework_TestCase
     ];
 
     public function testEntitiesDefined() {
-        foreach ($this->entity_colllection as $e) {
+        foreach ($this->entity_collection as $e) {
             $this->assertTrue(class_exists($e[0]));
         }
     }
 
     public function testEntitiesCorrectParent() {
-        foreach ($this->entity_colllection as $e) {
+        foreach ($this->entity_collection as $e) {
             $this->assertInstanceOf('LeanTesting\API\Client\BaseClass\Entity', new $e[0](new Client, ['id' => 1]));
         }
     }
 
     public function testEntitiesDataParsing() {
         $data = ['id' => 1, 'YY' => 'strstr', 'FF' => [1, 2, 3, 'asdasdasd'], 'GG' => ['test1' => true, 'test2' => []]];
-        foreach ($this->entity_colllection as $e) {
+        foreach ($this->entity_collection as $e) {
             $this->assertSame((new $e[0](new Client, $data))->data, $data);
         }
     }
 
     public function testEntitiesInstanceNonArrData() {
-        foreach ($this->entity_colllection as $e) {
+        foreach ($this->entity_collection as $e) {
             try {
                 new $e[0](new Client, '');
                 $this->fail('No exception thrown');
@@ -78,7 +78,7 @@ class EntitiesTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testEntitiesInstanceEmptyData() {
-        foreach ($this->entity_colllection as $e) {
+        foreach ($this->entity_collection as $e) {
             try {
                 new $e[0](new Client, []);
                 $this->fail('No exception thrown');
@@ -90,7 +90,7 @@ class EntitiesTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testEntitiesHaveSecondaries() {
-        foreach ($this->entity_colllection as $e) {
+        foreach ($this->entity_collection as $e) {
             if (!array_key_exists(1, $e)) {
                 continue;
             }
