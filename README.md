@@ -90,6 +90,10 @@ $client->user->getInformation()
 $client->user->organizations->all()->toArray()
 ```
 
+- Retrieve An Existing **User** Organization
+```php
+$client->user->organizations->find(31)->data
+```
 ----
 
 - List All **Projects**
