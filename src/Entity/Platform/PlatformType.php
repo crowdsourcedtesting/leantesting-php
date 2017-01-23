@@ -8,6 +8,9 @@ use LeanTesting\API\Client\Handler\Platform\PlatformTypeDevicesHandler;
 
 class PlatformType extends Entity
 {
+    /**
+     * @var PlatformTypeDevicesHandler
+     */
     public $devices;
 
     public function __construct($origin, $data)

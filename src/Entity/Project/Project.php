@@ -5,6 +5,8 @@ namespace LeanTesting\API\Client\Entity\Project;
 use LeanTesting\API\Client\BaseClass\Entity;
 
 use LeanTesting\API\Client\Handler\Project\ProjectSectionsHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectTestCasesHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectTestRunsHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectVersionsHandler;
 use LeanTesting\API\Client\Handler\Project\ProjectUsersHandler;
 
@@ -15,28 +17,74 @@ use LeanTesting\API\Client\Handler\Project\ProjectBugReproducibilitySchemeHandle
 use LeanTesting\API\Client\Handler\Project\ProjectBugPrioritySchemeHandler;
 
 use LeanTesting\API\Client\Handler\Project\ProjectBugsHandler;
+use LeanTesting\API\Client\Handler\Project\ProjectWebhooksHandler;
 
 class Project extends Entity
 {
+    /**
+     * @var ProjectSectionsHandler
+     */
     public $sections;
+    /**
+     * @var ProjectVersionsHandler
+     */
     public $versions;
+    /**
+     * @var ProjectUsersHandler
+     */
     public $users;
-
+    /**
+     * @var ProjectTestRunsHandler
+     */
+    public $testRuns;
+    /**
+     * @var ProjectTestCasesHandler
+     */
+    public $testCases;
+    /**
+     * @var ProjectWebhooksHandler
+     */
+    public $webhooks;
+    /**
+     * @var ProjectBugTypeSchemeHandler
+     */
     public $bugTypeScheme;
+    /**
+     * @var ProjectBugStatusSchemeHandler
+     */
     public $bugStatusScheme;
+    /**
+     * @var ProjectBugSeveritySchemeHandler
+     */
     public $bugSeverityScheme;
+    /**
+     * @var ProjectBugReproducibilitySchemeHandler
+     */
     public $bugReproducibilityScheme;
+    /**
+     * @var ProjectBugPrioritySchemeHandler
+     */
     public $bugPriorityScheme;
-
+    /**
+     * @var ProjectBugsHandler
+     */
     public $bugs;
 
+    /**
+     * Project constructor.
+     * @param \LeanTesting\API\Client\Client $origin
+     * @param \mixed[] $data
+     */
     public function __construct($origin, $data)
     {
         parent::__construct($origin, $data);
 
-        $this->sections = new ProjectSectionsHandler($origin, $data['id']);
-        $this->versions = new ProjectVersionsHandler($origin, $data['id']);
-        $this->users    = new ProjectUsersHandler($origin, $data['id']);
+        $this->sections  = new ProjectSectionsHandler($origin, $data['id']);
+        $this->versions  = new ProjectVersionsHandler($origin, $data['id']);
+        $this->users     = new ProjectUsersHandler($origin, $data['id']);
+        $this->testRuns  = new ProjectTestRunsHandler($origin, $data['id']);
+        $this->testCases = new ProjectTestCasesHandler($origin, $data['id']);
+        $this->webhooks  = new ProjectWebhooksHandler($origin, $data['id']);
 
         $this->bugTypeScheme            = new ProjectBugTypeSchemeHandler($origin, $data['id']);
         $this->bugStatusScheme          = new ProjectBugStatusSchemeHandler($origin, $data['id']);
