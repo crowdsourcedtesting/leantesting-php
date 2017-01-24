@@ -33,12 +33,6 @@ class ProjectWebhooksHandler extends EntityHandler
         'attachment_create',
         'run_start',
         'run_finish',
-        'attachment_create',
-        'comment_edit',
-        'message_edit',
-        'bug_move',
-        'bug_assign',
-        'bug_status_change',
     ];
 
     public function __construct($origin, $project_id)
