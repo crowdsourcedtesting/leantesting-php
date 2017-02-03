@@ -9,7 +9,13 @@ use LeanTesting\API\Client\Handler\Bug\BugAttachmentsHandler;
 
 class Bug extends Entity
 {
+    /**
+     * @var BugCommentsHandler
+     */
     public $comments;
+    /**
+     * @var BugAttachmentsHandler
+     */
     public $attachments;
 
     public function __construct($origin, $data)

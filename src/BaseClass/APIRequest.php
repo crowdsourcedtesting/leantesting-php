@@ -18,9 +18,8 @@ class APIRequest
 {
 
     protected $default_opts = [                       // Basic support for extended opts
-        'base_uri'  => 'https://api.leantesting.com', // assumed default for API base
         'form_data' => false,                         // sets content type to multipart/form-data if true
-        'params'    => []                             // params to be pased in request
+        'params'    => []                             // params to be passed in request
     ];
 
     protected $origin;
@@ -98,7 +97,7 @@ class APIRequest
 
         $curl_headers = [];
 
-        $call_url = $this->opts['base_uri'] . $this->endpoint;
+        $call_url = Client::$api_base_uri . $this->endpoint;
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $this->method);
 
@@ -153,7 +152,7 @@ class APIRequest
      * @throws SDKErrorResponseException   if the remote response is an error.
      *         A server response is interpreted as an error if obtained status code differs from expected status code.
      *         Expected status codes are `200 OK` for GET/POST/PUT, `204 No Content` for DELETE.
-     * @throws SDKBadJSONResponseException if the remote response contains erronated or invalid JSON contents
+     * @throws SDKBadJSONResponseException if the remote response contains error or invalid JSON content
      *
      * @return mixed[]|boolean In case of successful request, a JSON decoded object is returned. If a DELETE request
      *         is issued, returns true if call is successful (exception otherwise).

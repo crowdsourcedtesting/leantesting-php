@@ -1,9 +1,10 @@
+
 # Lean Testing PHP SDK
 
 [![Latest Stable Version](https://poser.pugx.org/cst/leantesting/v/stable)](https://packagist.org/packages/cst/leantesting)
 [![License](https://poser.pugx.org/cst/leantesting/license)](https://packagist.org/packages/cst/leantesting)
 
-**PHP client for [Lean Testing API](https://leantesting.com/en/api-docs)**
+**PHP client for [Lean Testing](https://leantesting.com/) API**
 
 You can sign up for a Lean Testing account at [https://leantesting.com](https://leantesting.com).
 
@@ -143,12 +144,32 @@ $new_version = $client->projects->find(3515)->versions->create([
 print_r( $new_version->data );
 ```
 
+- List **Project Test cases**
+
+```php
+$client->projects->find(3515)->testCases->all()->toArray();
+```
+
+- List **Project Test runs**
+
+```php
+$client->projects->find(3515)->testRuns->all()->toArray();
+```
+
+- Retrieve **Test run** results
+```php
+$client->projects->find(3515)->testRuns->find(123)->data;
+```
 
 - List **Project Users**
 ```php
-$client->projects->find(3515)->users->all()->toArray()
+$client->projects->find(3515)->users->all()->toArray();
 ```
 
+- Remove **Project Users**
+```php
+$client->projects->find(3515)->users->delete(123);
+```
 
 - List **Bug Type Scheme**
 ```php
