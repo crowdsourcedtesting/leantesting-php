@@ -100,6 +100,16 @@ class MockRequestsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($resp['meta']['pagination']['total_pages'], $col->totalPages());
         $this->assertEquals($resp['meta']['pagination']['count'], $col->count());
     }
+    public function testRetrieveUserOrganizations() {
+        $ret_class = 'LeanTesting\API\Client\Entity\User\UserOrganization';
+        $resp = $this->robj(['alias', '_id', 'logo', 'name', '_owner_id', 'url']);
+        $this->client->debug_return = ['data' => json_encode($resp), 'status' => 200];
+
+        $obj = $this->client->user->organizations->find(0);
+
+        $this->assertSame($resp, $obj->data);
+        $this->assertInstanceOf($ret_class, $obj);
+    }
     /* END USER */
 
 
