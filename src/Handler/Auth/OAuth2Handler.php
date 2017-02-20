@@ -122,6 +122,7 @@ class OAuth2Handler
         );
 
         $resp = $req->exec();
-        return $resp['access_token'];
+        return $resp;
     }
+
 }

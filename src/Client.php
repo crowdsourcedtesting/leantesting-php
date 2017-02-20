@@ -1,4 +1,5 @@
 <?php
+
 namespace LeanTesting\API\Client;
 
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
@@ -78,4 +79,5 @@ final class Client
 
         $this->access_token = $access_token;
     }
+
 }
