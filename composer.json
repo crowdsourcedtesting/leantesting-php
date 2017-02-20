@@ -1,41 +1,40 @@
 {
-  "name": "cst/leantesting",
-  "description": "Lean Testing PHP SDK",
-  "keywords": [
-    "testing",
-    "bug tracker",
-    "api"
-  ],
-  "homepage": "https://leantesting.com/",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Marcel Bontaș",
-      "email": "marcel.bontas@yandex.ru",
-      "role": "Developer"
+    "name"       : "cst/leantesting",
+    "description": "Lean Testing PHP SDK",
+    "keywords"   : [
+        "testing",
+        "bug tracker",
+        "api"
+    ],
+    "homepage": "https://leantesting.com/",
+    "license" : "MIT",
+    "authors" : [
+        {
+            "name" : "Marcel Bontaș",
+            "email": "marcel.bontas@yandex.ru",
+            "role" : "Developer"
+        }, {
+            "name" : "Carlos Yakimov",
+            "email": "carlos@crowdsourcedtesting.com",
+            "role" : "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
     },
-    {
-      "name": "Carlos Yakimov",
-      "email": "carlos@crowdsourcedtesting.com",
-      "role": "Developer"
+    "require-dev": {
+        "phpunit/phpunit"          : "~4.0",
+        "mockery/mockery"          : "~0.9",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "LeanTesting\\API\\Client\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LeanTesting\\API\\Client\\Test\\": "tests"
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~4.0",
-    "mockery/mockery": "~0.9",
-    "squizlabs/php_codesniffer": "2.*"
-  },
-  "autoload": {
-    "psr-4": {
-      "LeanTesting\\API\\Client\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "LeanTesting\\API\\Client\\Test\\": "tests"
-    }
-  }
 }
