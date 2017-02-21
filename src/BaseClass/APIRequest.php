@@ -1,4 +1,5 @@
 <?php
+
 namespace LeanTesting\API\Client\BaseClass;
 
 use LeanTesting\API\Client\Client;
@@ -16,7 +17,6 @@ use LeanTesting\API\Client\Exception\SDKUnexpectedResponseException;
  */
 class APIRequest
 {
-
     protected $default_opts = [                       // Basic support for extended opts
         'form_data' => false,                         // sets content type to multipart/form-data if true
         'params'    => []                             // params to be passed in request
@@ -140,7 +140,7 @@ class APIRequest
         $ch = null;
 
         return [
-            'data' => $curl_data,
+            'data'   => $curl_data,
             'status' => $curl_status
         ];
     }
@@ -164,12 +164,12 @@ class APIRequest
             array_key_exists('data', $this->origin->debug_return) &&
             array_key_exists('status', $this->origin->debug_return)) {
 
-            $curl_data = $this->origin->debug_return['data'];
+            $curl_data   = $this->origin->debug_return['data'];
             $curl_status = $this->origin->debug_return['status'];
 
         } else {
-            $call = $this->call();
-            $curl_data = $call['data'];
+            $call        = $this->call();
+            $curl_data   = $call['data'];
             $curl_status = $call['status'];
         }
 

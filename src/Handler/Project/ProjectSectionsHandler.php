@@ -27,7 +27,7 @@ class ProjectSectionsHandler extends EntityHandler
         parent::create($fields);
 
         $supports = [
-            'name' => Client::REQUIRED_PARAM,
+            'name' => Client::REQUIRED_PARAM
         ];
 
         if ($this->enforce($fields, $supports)) {
@@ -59,7 +59,7 @@ class ProjectSectionsHandler extends EntityHandler
             '/v1/projects/' . $this->project_id . '/sections/' . $id,
             'GET',
             [
-                'params' => $params,
+                'params' => $params
             ]
         );
 
