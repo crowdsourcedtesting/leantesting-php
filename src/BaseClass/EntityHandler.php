@@ -1,4 +1,5 @@
 <?php
+
 namespace LeanTesting\API\Client\BaseClass;
 
 use LeanTesting\API\Client\Client;

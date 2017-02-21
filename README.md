@@ -91,7 +91,7 @@ $client->user->getInformation()
 $client->user->organizations->all()->toArray()
 ```
 
-- Retrieve An Existing **User** Organization
+- Retrieve An Existing **User Organization**
 ```php
 $client->user->organizations->find(31)->data
 ```
@@ -144,19 +144,19 @@ $new_version = $client->projects->find(3515)->versions->create([
 print_r( $new_version->data );
 ```
 
-- List **Project Test cases**
+- List **Project Test Cases**
 
 ```php
 $client->projects->find(3515)->testCases->all()->toArray();
 ```
 
-- List **Project Test runs**
+- List **Project Test Runs**
 
 ```php
 $client->projects->find(3515)->testRuns->all()->toArray();
 ```
 
-- Retrieve **Test run** results
+- Retrieve Results For **Test Run**
 ```php
 $client->projects->find(3515)->testRuns->find(123)->data;
 ```
@@ -166,7 +166,7 @@ $client->projects->find(3515)->testRuns->find(123)->data;
 $client->projects->find(3515)->users->all()->toArray();
 ```
 
-- Remove **Project Users**
+- Remove A **Project User**
 ```php
 $client->projects->find(3515)->users->delete(123);
 ```

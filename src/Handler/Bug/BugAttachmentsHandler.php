@@ -35,7 +35,7 @@ class BugAttachmentsHandler extends EntityHandler
     private function getCurlFile($filepath)
     {
         $content_type = finfo_file(finfo_open(FILEINFO_MIME_TYPE), $filepath);
-        $target_name = basename($filepath);
+        $target_name  = basename($filepath);
 
         if (function_exists('curl_file_create')) {
             return curl_file_create($filepath, $content_type, $target_name);
@@ -76,7 +76,7 @@ class BugAttachmentsHandler extends EntityHandler
             'POST',
             [
                 'form_data' => true,
-                'params' => [
+                'params'    => [
                     'file' => $this->getCurlFile($filepath)
                 ]
             ]

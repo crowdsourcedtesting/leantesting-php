@@ -1,4 +1,5 @@
 <?php
+
 namespace LeanTesting\API\Client\Handler\Project;
 
 use LeanTesting\API\Client\BaseClass\APIRequest;
@@ -33,7 +34,7 @@ class ProjectTestRunsHandler extends EntityHandler
             'case_id'    => Client::REQUIRED_PARAM,
             'version_id' => Client::REQUIRED_PARAM,
             'creator_id' => Client::OPTIONAL_PARAM,
-            'platform'   => Client::OPTIONAL_PARAM,
+            'platform'   => Client::OPTIONAL_PARAM
         ];
 
         if ($this->enforce($fields, $supports)) {

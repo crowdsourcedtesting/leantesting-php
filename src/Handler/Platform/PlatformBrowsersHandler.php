@@ -1,4 +1,5 @@
 <?php
+
 namespace LeanTesting\API\Client\Handler\Platform;
 
 use LeanTesting\API\Client\BaseClass\APIRequest;
