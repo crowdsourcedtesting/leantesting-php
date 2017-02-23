@@ -22,9 +22,6 @@ final class Client
     const OPTIONAL_PARAM = 0;
     const REQUIRED_PARAM = 1;
 
-    public static $api_base_uri = 'https://api.leantesting.com';
-    public static $oauth_base_uri = 'https://app.leantesting.com';
-
     protected $access_token = null;
 
     public $auth;
@@ -33,6 +30,8 @@ final class Client
     public $bugs;
     public $attachments;
     public $platform;
+
+    public static $oauth_base_uri = 'https://app.leantesting.com';
 
     public $debug_return = null;
 

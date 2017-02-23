@@ -18,6 +18,7 @@ use LeanTesting\API\Client\Exception\SDKUnexpectedResponseException;
 class APIRequest
 {
     protected $default_opts = [                       // Basic support for extended opts
+        'base_uri'  => 'https://api.leantesting.com', // assumed default for API base
         'form_data' => false,                         // sets content type to multipart/form-data if true
         'params'    => []                             // params to be passed in request
     ];
@@ -97,7 +98,8 @@ class APIRequest
 
         $curl_headers = [];
 
-        $call_url = Client::$api_base_uri . $this->endpoint;
+        $base_uri = $this->opts['base_uri'];
+        $call_url = $base_uri . $this->endpoint;
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $this->method);
 
