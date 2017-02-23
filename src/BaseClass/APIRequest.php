@@ -56,7 +56,7 @@ class APIRequest
         }
 
         $this->opts = $this->default_opts;
-        $this->updateOpts($opts);
+        $this->updateOpts($opts + ['base_uri' => Client::$api_base_uri ]);
 
         $this->origin   = $origin;
         $this->endpoint = $endpoint;
@@ -97,7 +97,8 @@ class APIRequest
 
         $curl_headers = [];
 
-        $call_url = Client::$api_base_uri . $this->endpoint;
+        $base_uri = $this->opts['base_uri'];
+        $call_url = $base_uri . $this->endpoint;
 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $this->method);
 

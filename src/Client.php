@@ -22,8 +22,6 @@ final class Client
     const OPTIONAL_PARAM = 0;
     const REQUIRED_PARAM = 1;
 
-    public static $api_base_uri = 'https://api.leantesting.com';
-
     protected $access_token = null;
 
     public $auth;
@@ -33,11 +31,21 @@ final class Client
     public $attachments;
     public $platform;
 
+    /**
+     * @var string The base URL for the Lean Testing API.
+     */
+    public static $api_base_uri = 'https://api.leantesting.com';
+
+    /**
+     * @var string The base URL for Lean Testing OAuth endpoints
+     */
+    public static $oauth_base_uri = 'https://app.leantesting.com';
+
     public $debug_return = null;
 
     public function __construct()
     {
-        $this->auth        =  new OAuth2Handler($this);
+        $this->auth        =  new OAuth2Handler($this, self::$oauth_base_uri);
         $this->user        =  new UserHandler($this);
         $this->projects    =  new ProjectsHandler($this);
         $this->bugs        =  new BugsHandler($this);
