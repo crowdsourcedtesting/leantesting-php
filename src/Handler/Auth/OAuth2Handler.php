@@ -1,11 +1,8 @@
 <?php
-
 namespace LeanTesting\API\Client\Handler\Auth;
 
 use LeanTesting\API\Client\Client;
-
 use LeanTesting\API\Client\BaseClass\APIRequest;
-
 use LeanTesting\API\Client\Exception\SDKInvalidArgException;
 
 /**
@@ -17,11 +14,26 @@ use LeanTesting\API\Client\Exception\SDKInvalidArgException;
  */
 class OAuth2Handler
 {
-    private $origin; // Reference to originating PHPClient instance
+    /**
+     * Reference to originating PHPClient instance
+     * @var Client
+     */
+    protected $origin;
 
-    public function __construct(Client $origin)
+    /**
+     * @var string
+     */
+    protected $base_uri;
+
+    /**
+     * OAuth2Handler constructor.
+     * @param Client $origin
+     * @param string $base_uri
+     */
+    public function __construct(Client $origin, $base_uri)
     {
         $this->origin = $origin;
+        $this->base_uri = $base_uri;
     }
 
     /**
@@ -53,7 +65,7 @@ class OAuth2Handler
             throw new SDKInvalidArgException('`$state` must be a string');
         }
 
-        $base_url = 'https://app.leantesting.com/login/oauth/authorize';
+        $base_url = "{$this->base_uri}/login/oauth/authorize";
 
         $params = [
             'client_id'    => $client_id,
@@ -116,7 +128,7 @@ class OAuth2Handler
             '/login/oauth/access_token',
             'POST',
             [
-                'base_uri' => 'https://app.leantesting.com',
+                'base_uri' => $this->base_uri,
                 'params'   => $params
             ]
         );

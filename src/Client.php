@@ -23,6 +23,7 @@ final class Client
     const REQUIRED_PARAM = 1;
 
     public static $api_base_uri = 'https://api.leantesting.com';
+    public static $oauth_base_uri = 'https://app.leantesting.com';
 
     protected $access_token = null;
 
@@ -37,7 +38,7 @@ final class Client
 
     public function __construct()
     {
-        $this->auth        =  new OAuth2Handler($this);
+        $this->auth        =  new OAuth2Handler($this, self::$oauth_base_uri);
         $this->user        =  new UserHandler($this);
         $this->projects    =  new ProjectsHandler($this);
         $this->bugs        =  new BugsHandler($this);
