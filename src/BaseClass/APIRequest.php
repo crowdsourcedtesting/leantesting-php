@@ -18,7 +18,6 @@ use LeanTesting\API\Client\Exception\SDKUnexpectedResponseException;
 class APIRequest
 {
     protected $default_opts = [                       // Basic support for extended opts
-        'base_uri'  => 'https://api.leantesting.com', // assumed default for API base
         'form_data' => false,                         // sets content type to multipart/form-data if true
         'params'    => []                             // params to be passed in request
     ];
@@ -57,7 +56,7 @@ class APIRequest
         }
 
         $this->opts = $this->default_opts;
-        $this->updateOpts($opts);
+        $this->updateOpts($opts + ['base_uri' => Client::$oauth_base_uri ]);
 
         $this->origin   = $origin;
         $this->endpoint = $endpoint;

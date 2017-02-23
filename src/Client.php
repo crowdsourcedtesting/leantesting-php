@@ -31,6 +31,14 @@ final class Client
     public $attachments;
     public $platform;
 
+    /**
+     * @var string The base URL for the Lean Testing API.
+     */
+    public static $api_base_uri = 'https://api.leantesting.com';
+
+    /**
+     * @var string The base URL for Lean Testing OAuth endpoints
+     */
     public static $oauth_base_uri = 'https://app.leantesting.com';
 
     public $debug_return = null;
