@@ -56,7 +56,7 @@ class APIRequest
         }
 
         $this->opts = $this->default_opts;
-        $this->updateOpts($opts + ['base_uri' => Client::$oauth_base_uri ]);
+        $this->updateOpts($opts + ['base_uri' => Client::$api_base_uri ]);
 
         $this->origin   = $origin;
         $this->endpoint = $endpoint;
